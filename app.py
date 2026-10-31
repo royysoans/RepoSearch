@@ -9,13 +9,13 @@ PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 if PROJECT_ROOT not in sys.path:
     sys.path.insert(0, PROJECT_ROOT)
 
-from repoquery import get_default_data_dir, is_index_ready, index_repo
+from reposearch import get_default_data_dir, is_index_ready, index_repo
 from retrieval.index import Retriever
 from llm.answer import ask_question, ask_question_stream
 
 # Page Configuration
 st.set_page_config(
-    page_title="RepoQuery - Codebase QA",
+    page_title="RepoSearch - Codebase QA",
     layout="wide",
     initial_sidebar_state="expanded"
 )
@@ -69,7 +69,7 @@ def main():
 
     # Sidebar Controls
     with st.sidebar:
-        st.title("RepoQuery")
+        st.title("RepoSearch")
         st.caption("Codebase RAG & Hybrid Search Engine")
         
         repo_path = st.session_state.repo_path
@@ -121,7 +121,7 @@ def main():
         st.caption("FAISS Vector + BM25 Sparse Search | Google Gemini AI")
 
     # Main Dashboard
-    st.markdown('<div class="main-header">RepoQuery</div>', unsafe_allow_html=True)
+    st.markdown('<div class="main-header">RepoSearch</div>', unsafe_allow_html=True)
     st.markdown('<div class="sub-header">Codebase Question Answering and Hybrid Vector Search</div>', unsafe_allow_html=True)
 
     # Main Repository Selection Card

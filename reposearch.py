@@ -130,8 +130,8 @@ def _run_ask(retriever: Retriever, question: str, top_k: int = 5):
 
 def main():
     parser = argparse.ArgumentParser(
-        prog="repoquery",
-        description="RepoQuery: Semantic & Hybrid RAG Codebase Search and Question Answering"
+        prog="reposearch",
+        description="RepoSearch: Semantic & Hybrid RAG Codebase Search and Question Answering"
     )
     subparsers = parser.add_subparsers(dest="command", help="Command to run")
 

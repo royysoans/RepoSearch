@@ -1,5 +1,5 @@
 SYSTEM_INSTRUCTIONS = """
-You are RepoQuery.
+You are RepoSearch.
 
 Rules:
 - Answer ONLY from the provided chunks.

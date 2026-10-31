@@ -1,10 +1,12 @@
-# RepoQuery
+# RepoSearch
 
-RepoQuery is a high-performance Retrieval-Augmented Generation (RAG) system and codebase search engine. It transforms source code repositories into searchable vector and keyword indices, enabling  natural language code exploration and real-time streaming Q&A powered by Google Gemini
+RepoSearch is a high-performance Retrieval-Augmented Generation (RAG) system and codebase search engine. It transforms source code repositories into searchable vector and keyword indices, enabling  natural language code exploration and real-time streaming Q&A powered by Google Gemini
+
+> 📖 **Deep Technical Documentation**: For a complete technical breakdown of the architecture, database layer, data flow diagrams, and underlying algorithms, see [`details.md`](details.md).
 
 ---
 
-![RepoQuery Demo](src/1.png)
+![RepoSearch Demo](src/1.png)
 
 ## Architecture & Step-by-Step Flow
 
@@ -43,10 +45,10 @@ RepoQuery is a high-performance Retrieval-Augmented Generation (RAG) system and 
   - Stream answers in real-time token chunks via `generate_answer_stream` for instant feedback.
 
 ### Step 6: Web Dashboard & CLI Interface
-- **Component**: Web Dashboard (`app.py`) & Unified CLI (`repoquery.py`)
+- **Component**: Web Dashboard (`app.py`) & Unified CLI (`reposearch.py`)
 - **How it works**:
   - **Web Dashboard (`app.py`)**: Built with Streamlit, providing real-time chat streaming, expandable citations, symbol keyword search, and repository index analytics. Uses `@st.cache_resource` to keep models and FAISS vectors cached in memory.
-  - **Unified CLI (`repoquery.py`)**: Supports single-question evaluation (`ask`), interactive terminal REPL, pure code search (`search`), and repository pre-indexing (`index`).
+  - **Unified CLI (`reposearch.py`)**: Supports single-question evaluation (`ask`), interactive terminal REPL, pure code search (`search`), and repository pre-indexing (`index`).
 
 ---
 
@@ -88,3 +90,20 @@ streamlit run app.py (this step might take some time)
 - Use the **Code Search** tab for instant symbol and keyword search (works without GeminiAPI)
 - Use the **Index Analytics** tab to view language breakdowns and indexed chunk tables
 - Ensure the file path is without inverted commas -> /Users/roystonsoans/Neon Survivor
+
+#### Option B: Unified Command Line Interface (CLI)
+Interact directly via terminal commands:
+```bash
+# Explicitly pre-build index for a repository
+python reposearch.py index /path/to/repo
+
+# Perform pure hybrid keyword/symbol search
+python reposearch.py search /path/to/repo "BM25Okapi"
+
+# Ask questions with streaming citations
+python reposearch.py ask /path/to/repo "How does the ingestion scanner work?"
+
+# Start interactive interactive REPL sessions (omit query/question)
+python reposearch.py search /path/to/repo
+python reposearch.py ask /path/to/repo
+```
